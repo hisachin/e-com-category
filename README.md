@@ -38,12 +38,6 @@ git clone https://github.com/hisachin/e-com-category.git
 
 ```
 
-Install the dependencies:
-
-```bash
-npm install
-```
-
 Set the environment variables:
 
 ```bash
@@ -58,12 +52,39 @@ cp .env.example .env
 Running locally:
 
 ```bash
+npm start
+```
+
+Testing:
+
+```bash
+# run all tests
+npm test
+
+```
+
+## Commands to run the backend application only
+
+Running locally:
+
+```bash
 npm run dev
 ```
 
-Running in production:
+Testing:
 
 ```bash
+# run all tests
+npm test
+
+```
+
+## Commands to run the frontend application only
+
+Running locally:
+
+```bash
+cd client/e-com
 npm start
 ```
 

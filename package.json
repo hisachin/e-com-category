@@ -4,7 +4,7 @@
   "description": "Built an application to manage E-Commerce Fashion categories in a tree structure",
   "main": "src/index.js",
   "scripts": {
-    "start": "NODE_ENV=development node src/index.js",
+    "start": "NODE_ENV=development sh start_app.sh",
     "dev": "cross-env NODE_ENV=development nodemon src/index.js",
     "test": "jest -i --colors --verbose --detectOpenHandles",
     "test:watch": "jest -i --watchAll",
