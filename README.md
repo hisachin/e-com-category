@@ -1,6 +1,6 @@
 # Context
 
-Built an application to manage E-Commerce Fashion categories in a tree structure
+An application to manage categories in a tree structure
 
 #### Data Sample:
 ##### 
@@ -25,41 +25,59 @@ Built an application to manage E-Commerce Fashion categories in a tree structure
             - Party Shirts
             - Causal Shirts
             - Plain Shirts
-            
-
-### Task
-
-1. Design an api that can display the categories in Hierarchical(Tree View) in N number of levels
-2. Design 3 API endpoint that will create/update/delete categories
-3. Display the category in tree structure.
 
 
-## Requirements
-### Functionality
-1. The API should follow typical RESTful API design pattern.
-2. The data should be saved in the DB.
-3. Provide proper unit test
+## Setup Project
 
-## Tech stack
-1. In any of these backend technology:  Java/Node.JS/Python/GoLang
-2. Frontend: React/Angular (BONUS)
+Follow these steps to start working on the project:
 
-## Evaluation
-1. Readable and Structured Code
-2. Logical implementation
-2. Covering all the edge-cases scenarios in the Unit Test
+Clone the repo
+
+```
+
+```
+
+Install the dependencies:
+
+```bash
+npm install
+```
+
+Set the environment variables:
+
+```bash
+cp .env.example .env
+
+# open .env and modify the environment variables (if needed)
+```
 
 
-### Bonus
-1. Write good in-code comments.
-3. Write good commit messages.
+## Commands to run the application
 
-### Time
-1. Task has completed in 9 hours
-2. Submission Date: Within 7 Days.
+Running locally:
 
-### How to Start
-1. Clone this Repository
-2. Commit the code and test cases to your cloned repository.
-3. DO NOT Fork this repository
-4. DO NOT raise PR to this repository
+```bash
+npm run dev
+```
+
+Running in production:
+
+```bash
+npm start
+```
+
+Testing:
+
+```bash
+# run all tests
+npm test
+
+```
+
+### API Endpoints
+
+**Category routes**:
+`POST /v1/categories` - create a category
+`GET /v1/categories` - get categories
+`PATCH /v1/categories/:categoryId` - update category
+`DELETE /v1/categories/:categoryId` - delete category

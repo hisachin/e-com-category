@@ -10,7 +10,8 @@ const envVarsSchema = Joi.object()
     PORT: Joi.number().default(3000),
     API_BASE_URL : Joi.string().required().description("API base url"),
     CLIENT_APP_URL : Joi.string().required().description("Client app url"),
-    MONGODB_URL: Joi.string().required().description('Mongo DB url')
+    MONGODB_URL: Joi.string().required().description('Mongo DB url'),
+    MONGODB_URL_TEST: Joi.string().required().description('Mongo DB test url')
   })
   .unknown();
 

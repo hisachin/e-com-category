@@ -2,11 +2,14 @@
   "name": "fullstack-developer-category-management",
   "version": "1.0.0",
   "description": "Built an application to manage E-Commerce Fashion categories in a tree structure",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "NODE_ENV=development node src/index.js",
     "dev": "cross-env NODE_ENV=development nodemon src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest -i --colors --verbose --detectOpenHandles",
+    "test:watch": "jest -i --watchAll",
+    "coverage": "jest -i --coverage",
+    "coverage:coveralls": "jest -i --coverage --coverageReporters=text-lcov | coveralls"
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +27,11 @@
     "winston": "^3.9.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "coveralls": "^3.1.1",
+    "faker": "^6.6.6",
+    "jest": "^29.5.0",
+    "node-mocks-http": "^1.12.2",
+    "nodemon": "^2.0.22",
+    "supertest": "^6.3.3"
   }
 }
