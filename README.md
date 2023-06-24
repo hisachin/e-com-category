@@ -34,6 +34,7 @@ Follow these steps to start working on the project:
 Clone the repo
 
 ```
+git clone https://github.com/hisachin/e-com-category.git
 
 ```
 
@@ -76,8 +77,8 @@ npm test
 
 ### API Endpoints
 
-**Category routes**:
-`POST /v1/categories` - create a category
-`GET /v1/categories` - get categories
-`PATCH /v1/categories/:categoryId` - update category
-`DELETE /v1/categories/:categoryId` - delete category
+**Category routes**:\
+`POST /v1/categories` - create a category\
+`GET /v1/categories` - get categories\
+`PATCH /v1/categories/:categoryId` - update category\
+`DELETE /v1/categories/:categoryId` - delete category\
