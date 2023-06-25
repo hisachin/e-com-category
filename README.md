@@ -101,5 +101,5 @@ npm test
 **Category routes**:\
 `POST /v1/categories` - create a category\
 `GET /v1/categories` - get categories\
-`PATCH /v1/categories/:categoryId` - update category\
+`PUT /v1/categories/:categoryId` - update category\
 `DELETE /v1/categories/:categoryId` - delete category\
