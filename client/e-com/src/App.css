@@ -1,3 +1,13 @@
 .e-com-app {
   padding: 1rem;
 }
+
+.add-category-btn{
+  margin: 10px auto;
+}
+
+.edit-category{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
