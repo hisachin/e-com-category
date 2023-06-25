@@ -1,5 +1,6 @@
 const httpStatus = require('http-status');
 const { Category } = require('../models');
+const ApiError = require('../utils/ApiError');
 
 /**
  * Create a category
@@ -31,12 +32,12 @@ const queryCategories = async () => {
  */
 const getCategoryById = async (categoryId) => {
   const category = await Category.findById(categoryId);
-  if(!category){
+  if (!category) {
     return null;
   }
 
   const subCategories = await Category.find({ path: { $regex: `^${category.path}\.` } });
-  return [category,...subCategories];
+  return [category, ...subCategories];
 };
 
 /**
@@ -46,7 +47,7 @@ const getCategoryById = async (categoryId) => {
  * @returns {Promise<Category>}
  */
 const updateCategoryById = async (categoryId, updateBody) => {
-  return await Category.findByIdAndUpdate(categoryId, { $set:updateBody }, { new: true });
+  return await Category.findByIdAndUpdate(categoryId, { $set: updateBody }, { new: true });
 };
 
 /**
@@ -55,7 +56,19 @@ const updateCategoryById = async (categoryId, updateBody) => {
  * @returns {Promise<Category>}
  */
 const deleteCategoryById = async (categoryId) => {
-  return Category.findByIdAndRemove(categoryId);
+  const category = await Category.findById(categoryId);
+
+  if (!category) {
+    return;
+  }
+
+  const subCategories = await Category.find({ path: { $regex: `^${category.path}\.` } });
+  
+  if (subCategories && subCategories.length) {
+    throw new ApiError(httpStatus.FORBIDDEN,'CategoryID can not be deleted');
+  }
+
+  return await Category.deleteOne({ _id: categoryId });
 };
 
 module.exports = {
