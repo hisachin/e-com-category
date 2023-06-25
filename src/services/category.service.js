@@ -65,7 +65,7 @@ const deleteCategoryById = async (categoryId) => {
   const subCategories = await Category.find({ path: { $regex: `^${category.path}\.` } });
   
   if (subCategories && subCategories.length) {
-    throw new ApiError(httpStatus.FORBIDDEN,'CategoryID can not be deleted');
+    throw new ApiError(httpStatus.FORBIDDEN,'Category can not be deleted.');
   }
 
   return await Category.deleteOne({ _id: categoryId });

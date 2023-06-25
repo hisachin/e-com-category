@@ -245,6 +245,31 @@ describe('Category Routes', () => {
             expect(res.body.message).toBe("CategoryId is not a valid Id.");
         });
 
+        it('should return 403 if subcategories is present.', async () => {
+
+            const res = await request(app)
+                .post('/v1/categories')
+                .send(newCategory)
+                .expect(httpStatus.CREATED);
+
+            let newCat = {
+                name : "cat1",
+                path : res.body.id
+            }
+
+            const newCatRes = await request(app)
+                .post('/v1/categories')
+                .send(newCat)
+                .expect(httpStatus.CREATED);
+
+            let deleteRes = await request(app)
+                .delete(`/v1/categories/${res.body.id}`)
+                .send()
+                .expect(httpStatus.FORBIDDEN);
+
+            expect(deleteRes.body.message).toBe("Category can not be deleted.");
+        });
+
         it('should return 204 and successfully delete the category', async () => {
 
             const res = await request(app)
