@@ -32,8 +32,11 @@ const updateCategory = catchAsync(async (req, res) => {
 });
 
 const deleteCategory = catchAsync(async (req, res) => {
-  await categoryService.deleteCategoryById(req.params.categoryId);
-  res.status(httpStatus.NO_CONTENT).send();
+  let result = await categoryService.deleteCategoryById(req.params.categoryId);
+  if(!result){
+    return res.status(httpStatus.NOT_FOUND).send({"message" : "CategoryId is not found."});
+  }
+  return res.status(httpStatus.NO_CONTENT).send();
 });
 
 module.exports = {

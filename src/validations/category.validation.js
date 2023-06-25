@@ -4,7 +4,13 @@ const { objectId } = require('./custom.validation');
 //function to validate the requestion before creating category
 const createCategory = {
   body: Joi.object().keys({
-    name: Joi.string().required(),
+    name: Joi.string().min(3).max(30).required().messages({
+      'string.base': `Category name must be a string.`,
+      'string.empty': `Category name cannot be an empty.`,
+      'string.min': `Category name should have a minimum length of {#limit}.`,
+      'string.max': `Category name should have a maximum length of {#limit}.`,
+      'any.required': `Category name is a required.`
+    }),
     path: Joi.string()
   }),
 };
@@ -30,11 +36,17 @@ const getCategory = {
 //function to validate the requestion before updating the category
 const updateCategory = {
   params: Joi.object().keys({
-    categoryId: Joi.required().custom(objectId),
+    categoryId: Joi.required().custom(objectId).message("CategoryId is not a valid Id."),
   }),
   body: Joi.object()
     .keys({
-      name: Joi.string().required(),
+      name: Joi.string().min(3).max(30).required().messages({
+        'string.base': `Category name must be a string.`,
+        'string.empty': `Category name cannot be an empty.`,
+        'string.min': `Category name should have a minimum length of {#limit}.`,
+        'string.max': `Category name should have a maximum length of {#limit}.`,
+        'any.required': `Category name is a required.`
+      }),
       path: Joi.string()
     })
     .min(1),
@@ -44,7 +56,7 @@ const updateCategory = {
 //function to validate the requestion before deleting the category
 const deleteCategory = {
   params: Joi.object().keys({
-    categoryId: Joi.string().custom(objectId),
+    categoryId: Joi.string().custom(objectId).message("CategoryId is not a valid Id."),
   }),
 };
 
