@@ -8,6 +8,7 @@ echo "Backend app dependencies installed."
 echo "Starting backend server..."
 node ./src/index.js &
 
+
 # Start the frontend
 cd ./client/e-com
 echo "Instaling frontend app dependencies..."
